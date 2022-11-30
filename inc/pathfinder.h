@@ -63,7 +63,8 @@ void mx_if_endresult(t_allways *temp);
 void mx_file_err(int argc, char *argv[]);
 void mx_new_way(t_way **ways, t_island *second, int length);
 void mx_show_res_one(t_allways *temp);
-void mx_err_dist(int err);
+void mx_err_dist(int err, t_countinf *obj);
+void mx_free_obj(t_countinf *obj);
 
 #endif
 

@@ -17,8 +17,10 @@ void mx_file_err(int argc, char *argv[]) {
 		mx_printerr("error: file ");
 		mx_printerr(argv[1]);
 		mx_printerr(" is empty\n");
+		close(fd);
 		exit(0);
 	}
 	free(str);
 }
+
 

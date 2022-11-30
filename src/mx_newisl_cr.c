@@ -5,6 +5,7 @@ t_island* mx_newisl_cr(char* isl) {
 	newIs->name = isl;
 	newIs->ways = NULL;
 	newIs->next = NULL;
+	
 	return newIs;
 }
 

@@ -9,6 +9,7 @@ static void inv_numbr_of_isl(t_island *buf, t_countinf *obj) {
 	}
 	if (obj->count != count) {
 		mx_printerr("error: invalid number of islands\n");
+		mx_free_obj(obj);
 		exit(0);
 	}
 	free(buf1);
@@ -37,9 +38,8 @@ void mx_give_data(t_countinf *obj) {
 		mx_add_new(first, second, length, i);
 		i += 1;
 		err += length;
-		mx_err_dist(err);
+		mx_err_dist(err, obj);
 	}
 	t_island *buf = obj->islands;
 	inv_numbr_of_isl(buf, obj);
-    	free(fromFile);
 }

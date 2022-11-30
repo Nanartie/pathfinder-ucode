@@ -19,8 +19,10 @@ static t_countinf *create_object(char *argv[]) {
 
 int main(int argc, char *argv[]) {
 	mx_file_err(argc, argv);
+	
 	t_countinf *obj = NULL;
 	obj = create_object(argv);
+	
 	mx_errors(obj);
 	mx_line_check(obj);
 	
@@ -28,8 +30,6 @@ int main(int argc, char *argv[]) {
 	mx_start_find_way(obj);
 	mx_find_way(obj);
 	mx_show_results(obj);
-	
-	free(obj->condition);
-	free(obj);
+	mx_free_obj(obj);
 	exit(0);
 }

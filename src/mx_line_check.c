@@ -1,15 +1,27 @@
 #include "pathfinder.h"
 
 static void checkfirst(t_countinf *obj) {
+
     char **all = obj->filestruct;
+    
     for (int i = 1; all[i] != NULL; i++) {
+    	if (all[i][0] == '-') {
+    		char *res = mx_itoa(i + 1);
+                mx_printerr("error: line ");
+                mx_printerr(res);
+                free(res);
+                mx_printerr(" is not valid\n");
+                mx_free_obj(obj);
+                exit(0);
+        }
         for (int j = 0; all[i][j] != '-'; j++) {
             if(mx_isalpha(all[i][j]) == false) { 
                 char *res = mx_itoa(i + 1);
                 mx_printerr("error: line ");
                 mx_printerr(res);
+                free(res);
                 mx_printerr(" is not valid\n");
-                free(obj);
+                mx_free_obj(obj);
                 exit(0);
              }
          }
@@ -29,8 +41,9 @@ static void checksec(t_countinf *obj) {
                  char *res = mx_itoa(i + 1);
                  mx_printerr("error: line ");
                  mx_printerr(res);
+                 free(res);
                  mx_printerr(" is not valid\n");
-                 free(obj);
+                 mx_free_obj(obj);
                  exit(0);
              }
          }
@@ -52,9 +65,9 @@ static void check_distline(t_countinf *obj) {
                  char *res = mx_itoa(i + 1);
                  mx_printerr("error: line ");
                  mx_printerr(res);
+                 free(res);
                  mx_printerr(" is not valid\n");
-                 free(obj);
-                 free(all);
+                 mx_free_obj(obj);
                  exit(0);
             }
             check = 0;

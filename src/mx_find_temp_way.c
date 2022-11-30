@@ -66,6 +66,5 @@ void mx_find_temp_way(t_countinf *obj, t_allways **allways, t_way *buf, int leng
         	}
         }
         way_pop_back(&buf);
-        
 }
 

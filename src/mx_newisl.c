@@ -4,7 +4,6 @@ t_island* mx_newisl(t_island** islnds, char* isl) {
 	t_island* buff = *islnds;
 	if (!buff) {
 		*islnds = mx_newisl_cr(isl);
-		free(buff);
 		return *islnds;		
 	}
 	t_island *latest;
@@ -17,7 +16,6 @@ t_island* mx_newisl(t_island** islnds, char* isl) {
 			latest = buff;
 		}
 	}
-	free(buff);
 	latest->next = mx_newisl_cr(isl);
 	return latest->next;
 }

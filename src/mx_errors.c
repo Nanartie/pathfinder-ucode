@@ -8,11 +8,12 @@ static void firstline_err(t_countinf *obj) {
 	while (c[++i]) {
 	    if (!mx_isdigit(c[i]))
 	        res = false;
+	    if (i !=0 && c[i] == '\n')
+	    	res = true;
 	}
 	if (res == false) {
 	    mx_printerr("error: line 1 is not valid\n");
-	    free(obj->condition);
-	    free(obj);
+	    mx_free_obj(obj);
 	    exit(0);
 	}
 }
@@ -34,8 +35,7 @@ static void numb_err(t_countinf *obj) {
 	    mx_printerr("error: line ");
             mx_printerr(res);
             mx_printerr(" is not valid\n");
-            free(obj->condition);
-            free(obj);
+            mx_free_obj(obj);
             exit(0);
         }
 	first = 0;
@@ -45,7 +45,9 @@ static void numb_err(t_countinf *obj) {
 
 void mx_errors(t_countinf *obj) {
 	firstline_err(obj);
-	numb_err(obj);
 	mx_str_errs(obj);
 	mx_line_check(obj);
+	numb_err(obj);
 }
+
+
